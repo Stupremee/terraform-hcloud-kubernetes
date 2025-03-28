@@ -517,10 +517,12 @@ data "talos_machine_configuration" "control_plane" {
   kubernetes_version = var.kubernetes_version
   machine_type       = "controlplane"
   machine_secrets    = talos_machine_secrets.this.machine_secrets
-  config_patches = [
-    yamlencode(local.control_plane_talos_config_patch[each.key]),
-    yamlencode(var.control_plane_config_patches)
-  ]
+  config_patches = concat([
+      yamlencode(local.control_plane_talos_config_patch[each.key]),
+      yamlencode(var.control_plane_config_patches),
+    ],
+    var.control_plane_raw_config_patches,
+  )
   docs     = false
   examples = false
 }
@@ -534,10 +536,12 @@ data "talos_machine_configuration" "worker" {
   kubernetes_version = var.kubernetes_version
   machine_type       = "worker"
   machine_secrets    = talos_machine_secrets.this.machine_secrets
-  config_patches = [
-    yamlencode(local.worker_talos_config_patch[each.key]),
-    yamlencode(var.worker_config_patches)
-  ]
+  config_patches = concat([
+      yamlencode(local.worker_talos_config_patch[each.key]),
+      yamlencode(var.worker_config_patches)
+    ], 
+    var.worker_raw_config_patches,
+  )
   docs     = false
   examples = false
 }

@@ -327,6 +327,12 @@ variable "control_plane_config_patches" {
   description = "List of configuration patches applied to the Control Plane nodes."
 }
 
+variable "control_plane_raw_config_patches" {
+  type        = list(string)
+  default     = []
+  description = "List of raw config patch strings"
+}
+
 
 # Worker
 variable "worker_nodepools" {
@@ -403,6 +409,12 @@ variable "worker_config_patches" {
   type        = list(any)
   default     = []
   description = "List of configuration patches applied to the Worker nodes."
+}
+
+variable "worker_raw_config_patches" {
+  type        = list(string)
+  default     = []
+  description = "List of raw config patch strings"
 }
 
 
