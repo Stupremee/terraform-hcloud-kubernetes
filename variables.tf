@@ -794,6 +794,12 @@ variable "kube_api_extra_args" {
   description = "Specifies additional command-line arguments to be passed to the kube-apiserver. This allows for customization of the API server's behavior according to specific cluster requirements."
 }
 
+variable "kube_api_extra_sans" {
+  type        = list(string)
+  default     = []
+  description = "Specifies additional Subject Alternative Names (SANs) to be included in the API server's TLS certificate. This allows for custom domain names or IP addresses to be recognized as valid endpoints for the API server."
+}
+
 
 # Talos CCM
 variable "talos_ccm_version" {
