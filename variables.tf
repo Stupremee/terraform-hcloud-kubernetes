@@ -679,6 +679,15 @@ variable "talos_service_log_destinations" {
   default = []
 }
 
+variable "talos_extra_manifests" {
+  type = list(object({
+    name     = string
+    contents = string
+  }))
+  default     = []
+  description = "Specifies additional YAML manifests to be included in the Talos Bootstrap configuration."
+}
+
 # Talos Backup
 variable "talos_backup_version" {
   type        = string

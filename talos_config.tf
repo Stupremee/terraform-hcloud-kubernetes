@@ -14,7 +14,8 @@ locals {
     local.metrics_server_manifest != null ? [local.metrics_server_manifest] : [],
     local.cert_manager_manifest != null ? [local.cert_manager_manifest] : [],
     local.ingress_nginx_manifest != null ? [local.ingress_nginx_manifest] : [],
-    local.cluster_autoscaler_manifest != null ? [local.cluster_autoscaler_manifest] : []
+    local.cluster_autoscaler_manifest != null ? [local.cluster_autoscaler_manifest] : [],
+    var.talos_extra_manifests
   )
   talos_manifests = [
     "https://raw.githubusercontent.com/siderolabs/talos-cloud-controller-manager/${var.talos_ccm_version}/docs/deploy/cloud-controller-manager-daemonset.yml",
