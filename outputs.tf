@@ -79,6 +79,11 @@ output "hcloud_subnet_control_plane" {
   value       = hcloud_network_subnet.control_plane
 }
 
+output "hcloud_subnet_load_balancer" {
+  description = "Subnet for load balancers"
+  value       = hcloud_network_subnet.load_balancer
+}
+
 output "cluster_health_check" {
   description = "Health check for the Kubernetes cluster"
   value       = data.talos_cluster_health.this[0]
