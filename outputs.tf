@@ -78,3 +78,13 @@ output "hcloud_subnet_control_plane" {
   description = "Subnet for control plane nodes"
   value       = hcloud_network_subnet.control_plane
 }
+
+output "cluster_health_check" {
+  description = "Health check for the Kubernetes cluster"
+  value       = data.talos_cluster_health.this[0]
+}
+
+output "kube_health_check" {
+  description = "Health check for the Kubernetes cluster"
+  value       = data.http.kube_api_health[0]
+}
