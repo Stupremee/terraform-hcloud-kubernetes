@@ -68,3 +68,13 @@ output "worker_public_ipv6_list" {
   description = "Public IPv6 addresses of all worker nodes"
   value       = local.worker_public_ipv6_list
 }
+
+output "hcloud_network_id" {
+  description = "ID of the Hetzner Cloud network"
+  value       = length(data.hcloud_network.this) > 0 ? data.hcloud_network.this[0].id : hcloud_network.this[0].id
+}
+
+output "hcloud_subnet_control_plane" {
+  description = "Subnet for control plane nodes"
+  value       = hcloud_network_subnet.control_plane
+}
