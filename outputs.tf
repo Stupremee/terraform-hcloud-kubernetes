@@ -93,3 +93,8 @@ output "kube_health_check" {
   description = "Health check for the Kubernetes cluster"
   value       = data.http.kube_api_health[0]
 }
+
+output "hcloud_load_balancer_kube_api" {
+  description = "Load balancer for the Kubernetes API"
+  value       = hcloud_load_balancer.kube_api[0]
+}
